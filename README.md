@@ -1,4 +1,15 @@
-# Fsharp.Monogame.3d.Triangle
-this challenge https://www.youtube.com/watch?v=K84VkRkk8Ns 
+# fsharp-monogame-template
 
-Time to doit: 32 mimutes
+## Configuration
+
+```
+dotnet tool restore
+dotnet mgcb-editor --register
+dotnet build
+```
+
+## Run
+
+```
+dotnet run
+```
