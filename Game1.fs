@@ -2,19 +2,16 @@
 
 open Microsoft.Xna.Framework
 open Microsoft.Xna.Framework.Graphics
-open Microsoft.Xna.Framework.Input
 
 type Game1() as this =
     inherit Game()
 
     let graphics = new GraphicsDeviceManager(this)
-    let mutable effect: BasicEffect =  Unchecked.defaultof<_>
+    let mutable effect: BasicEffect = Unchecked.defaultof<_>
     let mutable verts: VertexPositionColor[] = Array.empty
-    let mutable buffer: VertexBuffer = Unchecked.defaultof<_>
-
-    do this.IsMouseVisible <- true
 
     override this.Initialize() =
+        this.IsMouseVisible <- true
         this.Window.AllowUserResizing <- true
         graphics.PreferredBackBufferWidth <- 1024
         graphics.PreferredBackBufferHeight <- 768
@@ -33,12 +30,12 @@ type Game1() as this =
             MathHelper.PiOver4,
             this.GraphicsDevice.Viewport.AspectRatio,
             0.001f, 1000f)
+
         effect.View <- Matrix.CreateLookAt(Vector3(0f,0f,-3f), Vector3.Forward, Vector3.Up)
         effect.World <- Matrix.Identity
         effect.VertexColorEnabled <- true
 
-
-        buffer <- new VertexBuffer(this.GraphicsDevice,VertexPositionColor.VertexDeclaration , 3, BufferUsage.WriteOnly)
+        let buffer = new VertexBuffer(this.GraphicsDevice,VertexPositionColor.VertexDeclaration , 3, BufferUsage.WriteOnly)
         buffer.SetData(verts)
 
         base.Initialize()
