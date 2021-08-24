@@ -43,13 +43,8 @@ type Game1() as this =
 
         base.Initialize()
 
-//    override this.Update gameTime =
-//
-//        base.Update gameTime
-
     override this.Draw gameTime =
         this.GraphicsDevice.Clear Color.White
-
 
         for pass in effect.CurrentTechnique.Passes do
             pass.Apply()
